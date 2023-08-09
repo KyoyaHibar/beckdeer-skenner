@@ -13,7 +13,7 @@ return {
 	-- $scripts that executes after backdoor is found
 	-- $you can add any scripts here
 	["autoExec"] = {
-		[[print("%username% was here")]],
+		[[print("Kyo was here")]],
 	},
 
 	-- $remote filters that you don't want to be scanned
