@@ -12,7 +12,7 @@ Utility to scan potential backdoored remotes for [Roblox](https://roblox.com).
 
 > Just copy the script below and run it through your script utility(executor).
 ```lua
-loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/jLn0n/beckdeer-skenner/main/src/main.lua"))()
+loadstring(game:HttpGetAsync("https://raw.githubusercontent.com/KyoyaHibar/beckdeer-skenner/main/src/main.lua"))()
 ```   
 
 ## Features
