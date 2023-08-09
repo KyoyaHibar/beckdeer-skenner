@@ -2,7 +2,7 @@
 # Forked by Kyo
 Utility to scan potential backdoored remotes for [Roblox](https://roblox.com).  
 
-**NOTE:** Make sure that you got the script from Scriptblox or this Github repo. There might have been reuploads of the script which includes malicious code.
+**NOTE:** Make sure that you got the script from Scriptblox or  from jln0n's Github repo. There might have been reuploads of the script which includes malicious code.
 
 ## Links
 * [Scriptblox Page](https://scriptblox.com/script/Universal-Script-jalon's-backdeer-skenner-6614)
