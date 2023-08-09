@@ -45,7 +45,13 @@ return {
 		end,
 		["RedirectedRemote"] = function(remoteObj)
 			return remoteObj:GetAttribute("isNonced")
-		end
+		end,
+	        ["StudioDummy"] = function(remoteObj)
+		        return remoteObj.Name == "r" or remoteObj.Parent.Name == "MouseInfo"
+	        end,
+	        ["AdminKick"] = function(remoteObj)
+		        return remoteObj.Name == "admin" or remoteObj.Parent.Name == "Assets"
+	        end,
 	},
 
 	-- $any macro shenanigans you can add here
