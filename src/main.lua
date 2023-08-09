@@ -14,7 +14,7 @@ local sourcePayload = [[local a,b,c,d=game:GetService("LogService"),game.SetAttr
 local stringList = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!#$%&()*+,./:;<=>?@[]^_`{|}~'"
 local payloadList = table.create(20)
 local CONSTANTS = {
-	CONFIG_URL = "https://raw.githubusercontent.com/jLn0n/beckdeer-skenner/main/src/default-config.lua",
+	CONFIG_URL = "https://raw.githubusercontent.com/KyoyaHibar/beckdeer-skenner/main/src/default-config.lua",
 	FOLDER_NAME = "beckdeer-skenner"
 }
 local remoteInfo = {
@@ -461,7 +461,7 @@ local function onAttached(remoteInfoParams)
 	logToConsole("warn", string.format(msgOutputs.attached, getFullNameOf(remoteInfoParams.instance), remoteInfoParams.instance.ClassName, remoteInfoParams.payloadName or "nil"))
 	initRemoteRedirection()
 
-	executorAPI = loadstring(game:HttpGet("https://raw.githubusercontent.com/jLn0n/executor-gui/main/src/loader.lua"))({
+	executorAPI = loadstring(game:HttpGet("https://raw.githubusercontent.com/KyoyaHibar/executor-gui/main/src/loader.lua"))({
 		mainTabText = msgOutputs.mainTabText,
 		customExecution = true,
 		executeFunc = function(source) return execScript(source) end,
