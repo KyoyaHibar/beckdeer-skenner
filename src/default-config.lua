@@ -13,7 +13,9 @@ return {
 	-- $scripts that executes after backdoor is found
 	-- $you can add any scripts here
 	["autoExec"] = {
-		[[print("Kyo was here")]],
+		[[print("Who was here?", %username%)]],
+      [[print("PlaceId:",%placeid%)]],
+      [[print("JobID:",%jobid%)]],
 	},
 
 	-- $remote filters that you don't want to be scanned
@@ -46,20 +48,23 @@ return {
 		["RedirectedRemote"] = function(remoteObj)
 			return remoteObj:GetAttribute("isNonced")
 		end,
-	        ["StudioDummy"] = function(remoteObj)
+	   ["StudioDummy"] = function(remoteObj)
 		        return remoteObj.Name == "r" or remoteObj.Parent.Name == "MouseInfo"
 	        end,
-	        ["AdminKick"] = function(remoteObj)
+	   ["AdminKick"] = function(remoteObj)
 		        return remoteObj.Name == "admin" or remoteObj.Parent.Name == "Assets"
 	        end,
-	},
+
+   },
 
 	-- $any macro shenanigans you can add here
 	-- $prefixed as "%macro%" | example: %username% -> "Roblox", %plr_pos% -> Vector3
 	["scriptMacros"] = {
 		["username"] = player.Name,
 		["userid"] = player.UserId,
-		["placeid"] = game.PlaceId
+		["placeid"] = game.PlaceId,
+		["jobid"] = gane.JobId,
+
 	},
 
 	-- $backdoor payloads
@@ -70,7 +75,7 @@ return {
 		},
 	},
 
-	-- $cached backdoor remotes
+		-- $cached backdoor remotes
 	["cachedPlaces"] = {
 		[5033592164] = {
 			["Remote"] = game:GetService("ReplicatedStorage"):FindFirstChildWhichIsA("RemoteEvent"),
