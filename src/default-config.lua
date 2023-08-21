@@ -52,7 +52,16 @@ return {
 	        ["AdminKick"] = function(remoteObj)
 		        return remoteObj.Name == "admin" or remoteObj.Parent.Name == "Assets"
 	        end,
-	},
+      ["Anti"] = function(remoteObj)
+         local remoteObjPath = remoteObj:GetFullName()
+         local remoteName = remoteObj.Name or tostring(remoteObj.Name)
+        return remoteObj:IsDescendantOf(game:GetService("ReplicatedStorage")) and (string.find(remoteName,           "lh") or string.find(remoteName, "lh"))
+      end,
+	       ["ZeroAuth"] = function(remoteObj)
+		        return remoteObj.Name == "ZeroAuthReceiver" or remoteObj.Parent.Name == "Assets"
+	        end,
+
+ },
 
 	-- $any macro shenanigans you can add here
 	-- $prefixed as "%macro%" | example: %username% -> "Roblox", %plr_pos% -> Vector3
