@@ -9,7 +9,7 @@ local base91 = loadstring(game:HttpGet("https://raw.githubusercontent.com/Dekkon
 -- variables
 local config
 local executorAPI
-local debugSource = [[local function main() %s end;local a=table.create(512)local b=function(...)local c={...}for d,e in pairs(c)do c[d]=tostring(e)or"nil"end;return c end;local f,g;do local h=getfenv(0)local i,j=print,warn;h.print,h.warn=function(...)table.insert(a,{0,workspace:GetServerTimeNow(),select("#",...),b(...)})end,function(...)table.insert(a,{1,workspace:GetServerTimeNow(),select("#",...),b(...)})end;f,g=pcall(setfenv(main,h))h.print,h.warn=i,j end;local k=Instance.new("BoolValue")k.Name,k.Value,k.Parent="%s",f,game:GetService("InsertService")k:SetAttribute("stderr",not f and g or nil)k:SetAttribute("stdout",#a>0 and game:GetService("HttpService"):JSONEncode(a)or nil)task.delay(60,k.Destroy,k)]]
+local debugSource = [[local function main() %s end;local a=table.create(512)local b=function(...)local c={...}for d,e in pairs(c)do c[d]=tostring(e)or"nil"end;return c end;local f,g;do local h=getfenv()local i,j=print,warn;h.print,h.warn=function(...)table.insert(a,{0,workspace:GetServerTimeNow(),select("#",...),b(...)})end,function(...)table.insert(a,{1,workspace:GetServerTimeNow(),select("#",...),b(...)})end;f,g=pcall(setfenv(main,h))h.print,h.warn=i,j end;local k=Instance.new("BoolValue")k.Name,k.Value,k.Parent="%s",f,game:GetService("InsertService")k:SetAttribute("stderr",not f and g or nil)k:SetAttribute("stdout",#a>0 and game:GetService("HttpService"):JSONEncode(a)or nil)task.delay(60,k.Destroy,k)]]
 local sourcePayload = [[local a,b,c,d=game:GetService("LogService"),game.SetAttribute,task.delay,"%s";b(a,d,"%s");c(5,b,a,d,nil)]]
 local stringList = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!#$%&()*+,./:;<=>?@[]^_`{|}~'"
 local payloadList = table.create(20)
@@ -260,6 +260,8 @@ local function getRemoteFunc(remoteObj)
 end
 
 local applyRedirectedRemoteSecurity do
+	local userId = game:GetService("Players").LocalPlayer.UserId
+
 	-- simple XOR encryption algorithm, nothing special
 	local function XORSource(source: string, key: number): string
 		local randomObj = Random.new(key)
@@ -289,7 +291,7 @@ local applyRedirectedRemoteSecurity do
 		local randIdx = notSameRandNumber(2, (argsLenght - 3), srcArgIdx, verificationIdx)
 		local nonceIdx = notSameRandNumber(2, (argsLenght - 3), srcArgIdx, verificationIdx, randIdx)
 		local nonceOffset = Random.new((argsLenght / verificationIdx) % (verificationIdx * 2)):NextInteger(8, argsLenght)
-		local XORKey = math.ceil(((((argsLenght / randIdx) % verificationIdx) * nonceIdx) * (verificationIdx * srcArgIdx)) * nonceOffset)
+		local XORKey = math.ceil(((((argsLenght / randIdx) % verificationIdx) * nonceIdx) * (userId * srcArgIdx)) * nonceOffset)
 
 		generatedArgs[1] = (
 			if (math.random(1, 2) == 2) then
